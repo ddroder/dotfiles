@@ -1,0 +1,27 @@
+                       \e[31m..::::::::::::::::::::::::::::::::...                                
+                 :~7JY55PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP55YJ7~:                           
+              ^?5PGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGP5?^                        
+            ~YGGGGGGGGGGPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPGGGGGGGGGG5!                      
+          ^YGGGGGGG5J7                                      !J5GGGGGGG5^                    
+         !PGGGGGGJ~.                                          .^JGGGGGGG7                   
+        !GGGGGG5~                                                ^5GGGGGG7                  
+       :PGGGGG5:                                                  .5GGGGGG^                 
+       JGGGGGG~                                                    ^PGGGGGJ                 
+      .PGGGGGY                                                      YGGGGGP.                
+      :PGGGGGJ                                                      JGGGGGP:                
+      .PGGGGGY                                                      JGGGGGP:                
+       YGGGGGP:                                                    .PGGGGG5                 
+       ~GGGGGGJ                                                    JGGGGGG!                 
+        ?GGGGGGJ.                                                .JGGGGGGJ                  
+         JGGGGGG5!.                                            .!5GGGGGGY.                  
+          7PGGGGGGPJ~:.                                    .:~?5GGGGGGP?                    
+           :JPGGGGGGGPP5YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY5PPGGGGGGGPJ^                     
+             :75GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG5?:                       
+                :!JYPPGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGPP5J!^.                         
+                    .::^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^:.                              
+       \e[0m\e[37m:!7???????7!: :?7777777~      ~?^     ^77777777~ !!       :7777777?!                 
+       5!         !5 ~G~.    ^P?    ?Y 57   ?5~         YJ      7P!                         
+       Y           Y ~G^!!Y5J??:  :5P!~~YY  G!          YJ      55777777?~                  
+       57          5 ~G^  :7Y7.  !57     75 75!         YY      !57                         
+       .~777777777~. :?:    .77 :?^       ~  :!7777777: !?77777^ :!7777777^                 
+
