@@ -66,8 +66,8 @@ fi
 export PATH
 
 # Run neofetch on terminal start if available
-if command -v neofetch &> /dev/null && [[ -f ~/.config/neofetch/oracle_custom.txt ]]; then
-    neofetch --ascii ~/.config/neofetch/oracle_custom.txt
+if command -v neofetch &> /dev/null && [[ -f ~/.config/neofetch/revecore_custom.txt ]]; then
+    neofetch --ascii ~/.config/neofetch/revecore_custom.txt
 fi
 
 # Conda initialization (if conda is installed)

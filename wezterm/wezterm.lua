@@ -1,7 +1,7 @@
 local wezterm=require("wezterm")
 
 local config=wezterm.config_builder()
-config.font=wezterm.font("MesloLGSDZ Nerd Font Propo")
+config.font=wezterm.font("JetBrains Mono")
 config.font_size=19
 
 config.enable_tab_bar=false

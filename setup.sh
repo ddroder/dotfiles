@@ -46,7 +46,7 @@ install_packages() {
                 echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
                 exit 1
             fi
-            brew install zsh tmux neovim zoxide neofetch
+            brew install zsh tmux neovim zoxide neofetch node
             # Install colorls via ruby gem
             if command -v gem &> /dev/null; then
                 gem install colorls || echo -e "${YELLOW}Could not install colorls via gem${NC}"
@@ -72,6 +72,11 @@ install_packages() {
     esac
 
     echo -e "${GREEN}Packages installed successfully!${NC}"
+}
+
+#Install node
+install_node(){
+brew install node
 }
 
 # Install Oh My Zsh
