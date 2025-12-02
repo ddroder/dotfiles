@@ -30,7 +30,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'RyanMillerC/better-vim-tmux-resizer'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'greggh/claude-code.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'Vigemus/iron.nvim'
 Plug 'goolord/alpha-nvim'
@@ -52,7 +51,7 @@ call plug#end()
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { "python", "javascript", "cpp", "html", "markdown", "lua", "vim", "vimdoc" },
   highlight = {
     enable = true,              -- false will disable the whole extension
    disable = { "c", "rust" },  -- list of language that will be disabled
@@ -61,7 +60,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
-lua require('claude-code').setup()
 
 lua << EOF
 require("notebook-navigator").setup {
@@ -78,7 +76,7 @@ lua << EOF
 require('code_runner').setup({
     -- Define how to run files based on their filetype
     filetype = {
-        python = "python -u",  -- Runs Python scripts using python3
+        python = "python3 -u",  -- Runs Python scripts using python3
         javascript = "node",    -- Runs JavaScript files using node
         cpp = "g++ % -o %:r && %:r",  -- Compiles C++ files with g++ and runs the resulting executable
         html = "xdg-open",      -- Opens HTML files in the default web browser (Linux example)
