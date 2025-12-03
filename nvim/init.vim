@@ -57,6 +57,10 @@ require("nvim-tree").setup({
         number=true,
         relativenumber=true
     },
+    renderer={
+        indent_markers={ enable=true },
+        highlight_git=true
+    },
     filters = {
         dotfiles = false,
     },
