@@ -26,6 +26,7 @@ let g:tmux_navigator_no_maappings=1
 
 
 call plug#begin()
+Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'RyanMillerC/better-vim-tmux-resizer'
