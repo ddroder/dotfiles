@@ -34,6 +34,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 Plug 'Vigemus/iron.nvim'
 Plug 'goolord/alpha-nvim'
 Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'GCBallesteros/NotebookNavigator.nvim'
 Plug 'nosduco/remote-sshfs.nvim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -48,6 +49,24 @@ Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
 Plug 'nvim-lua/plenary.nvim'
 call plug#end()
 
+lua << EOF
+require("nvim-tree").setup({
+    view = {
+        width = 30,
+        side = "left",
+    },
+    filters = {
+        dotfiles = false,
+    },
+    git = {
+        enable = true,
+        ignore = false,
+    },
+})
+EOF
+
+" Add this keybinding with your other mappings
+nnoremap <Leader>e :NvimTreeToggle<CR>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -68,7 +87,6 @@ require("notebook-navigator").setup {
     repl_command = "jupyter", -- Command to open the REPL (e.g., Jupyter, Python)
 }
 EOF
-
 
 
 " Configure code_runner.nvim
