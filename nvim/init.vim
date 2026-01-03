@@ -18,7 +18,7 @@ set relativenumber
 
 let g:mkdp_browser='firefox'
 let g:python3_host_prog="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
-let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-yaml']
+let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-yaml','coc-go']
 let g:coc_semantic_highlight_method = 'highlight'  " or disable entirely
 let g:coc_disable_semantic_tokens = 1
 let b:coc_diagnositc_disable=1
@@ -83,7 +83,7 @@ nnoremap <Leader>e :NvimTreeToggle<CR>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "python", "javascript", "cpp", "html", "markdown", "lua", "vim", "vimdoc" },
+  ensure_installed = { "python", "javascript", "cpp", "html", "markdown", "lua", "vim", "vimdoc" ,'go'},
   highlight = {
     enable = true,              -- false will disable the whole extension
    disable = { "c", "rust" },  -- list of language that will be disabled
