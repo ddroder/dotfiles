@@ -16,8 +16,9 @@ set noswapfile
 set relativenumber
 
 
-
+let g:mkdp_browser='firefox'
 let g:python3_host_prog="/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
+let g:coc_global_extensions = ['coc-pyright', 'coc-json', 'coc-yaml']
 let g:coc_semantic_highlight_method = 'highlight'  " or disable entirely
 let g:coc_disable_semantic_tokens = 1
 let b:coc_diagnositc_disable=1
@@ -133,7 +134,9 @@ nmap <C-p> <Plug>MarkdownPreviewToggle
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <C-e> :lua require("harpoon.ui").nav_next()<CR>
-nnoremap <Leader>gd <Plug>(coc-definition)<CR>
+nmap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+inoremap <silent><expr> <C-k> CocActionAsync('showSignatureHelp')
 nnoremap <C-q> :lua require("harpoon.ui").nav_prev()<CR>
 tnoremap <C-h> <C-\><C-N>:TmuxNavigateLeft<CR>
 tnoremap <C-j> <C-\><C-N>:TmuxNavigateDown<CR>

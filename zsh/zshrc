@@ -84,3 +84,4 @@ if [[ -f "/opt/homebrew/anaconda3/bin/conda" ]]; then
     fi
     unset __conda_setup
 fi
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pmk/env/global/bin:/Users/Daniel.Droder/Library/Python/3.9/bin
