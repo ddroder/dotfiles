@@ -126,6 +126,7 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <Leader>t :vsplit<CR>:terminal<CR>
 nnoremap <Leader>f :Telescope find_files<CR>
+nnoremap <Leader>g :Telescope live_grep<CR>
 nnoremap <Leader>r :RunCode<CR>
 nnoremap <Leader>c :RunClose<CR>
 nmap <C-s> <Plug>MarkdownPreview

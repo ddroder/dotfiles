@@ -46,7 +46,7 @@ install_packages() {
                 echo '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
                 exit 1
             fi
-            brew install zsh tmux neovim zoxide neofetch node
+            brew install zsh tmux neovim zoxide neofetch node ripgrep fd
             # Install colorls via ruby gem
             if command -v gem &> /dev/null; then
                 gem install colorls || echo -e "${YELLOW}Could not install colorls via gem${NC}"
@@ -54,15 +54,15 @@ install_packages() {
             ;;
         debian)
             sudo apt update
-            sudo apt install -y zsh tmux neovim zoxide neofetch ruby
+            sudo apt install -y zsh tmux neovim zoxide neofetch ruby ripgrep fd-find
             sudo gem install colorls || echo -e "${YELLOW}Could not install colorls${NC}"
             ;;
         fedora)
-            sudo dnf install -y zsh tmux neovim zoxide neofetch ruby
+            sudo dnf install -y zsh tmux neovim zoxide neofetch ruby ripgrep fd-find
             sudo gem install colorls || echo -e "${YELLOW}Could not install colorls${NC}"
             ;;
         arch)
-            sudo pacman -S --noconfirm zsh tmux neovim zoxide neofetch ruby
+            sudo pacman -S --noconfirm zsh tmux neovim zoxide neofetch ruby ripgrep fd
             gem install colorls || echo -e "${YELLOW}Could not install colorls${NC}"
             ;;
         *)
