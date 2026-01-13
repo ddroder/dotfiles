@@ -1,0 +1,21 @@
+# Font settings
+font-family = JetBrainsMono Nerd Font
+font-size = 19
+
+# Window settings - no tab bar, minimal decorations
+gtk-tabs-location = hidden
+macos-titlebar-style = hidden
+window-decoration = false
+
+# Background image (full opacity, no dimming)
+background-image = /Users/Daniel.Droder/backgrounds/4k_luffy.jpg
+background-image-opacity = .5
+
+# Catppuccin Mocha theme
+theme = catppuccin-mocha
+
+# macOS Option key bindings for word navigation
+# Option+Left = backward-word (Alt+b)
+keybind = opt+left=text:\x1bb
+# Option+Right = forward-word (Alt+f)
+keybind = opt+right=text:\x1bf
