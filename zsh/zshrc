@@ -65,6 +65,9 @@ fi
 
 export PATH
 
+# Source machine-specific local config if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 # Run neofetch on terminal start if available
 # Set NEOFETCH_LOGO env var to use a custom logo (e.g., "oracle", "revecore")
 # Falls back to default neofetch if env var is unset or file doesn't exist

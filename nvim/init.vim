@@ -41,6 +41,7 @@ Plug 'GCBallesteros/NotebookNavigator.nvim'
 Plug 'stevearc/oil.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ThePrimeagen/harpoon'
 Plug 'CRAG666/code_runner.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ThePrimeagen/vim-be-good'
@@ -128,7 +129,7 @@ require('code_runner').setup({
     },
 })
 EOF
-colorscheme kanagawa
+colorscheme dracula
 
 nnoremap <Leader>tf :Telescope treesitter<C>
 nnoremap <leader>nb :!jupytext --to ipynb %<CR>

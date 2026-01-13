@@ -12,7 +12,7 @@ background-image = /Users/Daniel.Droder/backgrounds/4k_luffy.jpg
 background-image-opacity = .5
 
 # Catppuccin Mocha theme
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 
 # macOS Option key bindings for word navigation
 # Option+Left = backward-word (Alt+b)
