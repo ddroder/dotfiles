@@ -38,7 +38,7 @@ Plug 'goolord/alpha-nvim'
 Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'GCBallesteros/NotebookNavigator.nvim'
-Plug 'nosduco/remote-sshfs.nvim'
+Plug 'stevearc/oil.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'ThePrimeagen/harpoon'
@@ -50,6 +50,20 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
 Plug 'nvim-lua/plenary.nvim'
 call plug#end()
+
+lua << EOF
+require('oil').setup({
+  default_file_explorer = false,  -- keep nvim-tree as default
+  view_options = {
+    show_hidden = true,
+  },
+  keymaps = {
+    ["<CR>"] = "actions.select",
+    ["-"] = "actions.parent",
+    ["q"] = "actions.close",
+  },
+})
+EOF
 
 lua << EOF
 require("nvim-tree").setup({
@@ -132,6 +146,10 @@ nnoremap <Leader>c :RunClose<CR>
 nmap <C-s> <Plug>MarkdownPreview
 nmap <M-s> <Plug>MarkdownPreviewStop
 nmap <C-p> <Plug>MarkdownPreviewToggle
+" Oil (remote editing)
+nnoremap <leader>ro :e oil-ssh://danDev-azure//home/azureuser/<CR>
+nnoremap <leader>rs :vsplit<CR>:terminal ssh danDev-azure<CR>
+
 nnoremap <leader>a :lua require("harpoon.mark").add_file()<CR>
 nnoremap <leader>h :lua require("harpoon.ui").toggle_quick_menu()<CR>
 nnoremap <C-e> :lua require("harpoon.ui").nav_next()<CR>
