@@ -50,6 +50,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
 Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/snacks.nvim'
+Plug 'NickvanDyke/opencode.nvim'
 call plug#end()
 
 lua << EOF
@@ -129,6 +131,46 @@ require('code_runner').setup({
     },
 })
 EOF
+
+lua << EOF
+require("snacks").setup({
+  input = {},
+  picker = {},
+  terminal = {},
+})
+
+vim.g.opencode_opts = {
+  provider = {
+    enabled = "tmux",
+  },
+}
+
+vim.o.autoread = true
+
+local opencode = require("opencode")
+vim.keymap.set({ "n", "x" }, "<leader>oa", function()
+  opencode.ask("@this: ", { submit = true })
+end, { desc = "Ask opencode" })
+vim.keymap.set({ "n", "x" }, "<leader>os", function()
+  opencode.select()
+end, { desc = "Select opencode action" })
+vim.keymap.set({ "n", "t" }, "<leader>ot", function()
+  opencode.toggle()
+end, { desc = "Toggle opencode" })
+vim.keymap.set({ "n", "x" }, "go", function()
+  return opencode.operator("@this ")
+end, { desc = "Add range to opencode", expr = true })
+vim.keymap.set("n", "goo", function()
+  return opencode.operator("@this ") .. "_"
+end, { desc = "Add line to opencode", expr = true })
+vim.keymap.set("n", "<leader>ou", function()
+  opencode.command("session.half.page.up")
+end, { desc = "Scroll opencode up" })
+vim.keymap.set("n", "<leader>od", function()
+  opencode.command("session.half.page.down")
+end, { desc = "Scroll opencode down" })
+EOF
+
 colorscheme dracula
 
 nnoremap <Leader>tf :Telescope treesitter<C>
