@@ -22,3 +22,7 @@ bold-is-bright = true
 keybind = opt+left=text:\x1bb
 # Option+Right = forward-word (Alt+f)
 keybind = opt+right=text:\x1bf
+
+# Pass Ctrl+Tab / Ctrl+Shift+Tab to tmux for window switching (CSI u encoding)
+keybind = ctrl+tab=text:\x1b[9;5u
+keybind = ctrl+shift+tab=text:\x1b[9;6u
