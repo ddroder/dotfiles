@@ -7,12 +7,15 @@ gtk-tabs-location = hidden
 macos-titlebar-style = hidden
 window-decoration = false
 
-# Background image (full opacity, no dimming)
-background-image = /Users/Daniel.Droder/backgrounds/4k_luffy.jpg
-background-image-opacity = .5
+# Background image - dimmed to match Wezterm brightness=0.15
+background-image = {{HOME}}/backgrounds/4k_luffy.jpg
+background-image-opacity = 0.15
 
-# Catppuccin Mocha theme
-theme = Catppuccin Mocha
+# Dracula theme (matching Wezterm)
+theme = Dracula
+
+# Boost text vibrancy to approximate Wezterm foreground_text_hsb
+bold-is-bright = true
 
 # macOS Option key bindings for word navigation
 # Option+Left = backward-word (Alt+b)

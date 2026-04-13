@@ -194,6 +194,19 @@ create_symlinks() {
     ln -sf "$DOTFILES_DIR/neofetch" "$HOME/.config/neofetch"
     echo "Linked neofetch config"
 
+    # Ghostty config (templated - replaces {{HOME}} with actual home path)
+    # macOS uses ~/Library/Application Support/com.mitchellh.ghostty/config
+    # Linux uses ~/.config/ghostty/config
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        GHOSTTY_DIR="$HOME/Library/Application Support/com.mitchellh.ghostty"
+    else
+        GHOSTTY_DIR="$HOME/.config/ghostty"
+    fi
+    mkdir -p "$GHOSTTY_DIR"
+    backup_if_exists "$GHOSTTY_DIR/config"
+    sed "s|{{HOME}}|$HOME|g" "$DOTFILES_DIR/ghostty/config" > "$GHOSTTY_DIR/config"
+    echo "Generated ghostty config"
+
     echo -e "${GREEN}Symlinks created successfully!${NC}"
 }
 
