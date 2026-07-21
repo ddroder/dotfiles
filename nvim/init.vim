@@ -48,11 +48,13 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-telescope/telescope.nvim', {'tag': '0.1.8'}
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'folke/snacks.nvim'
 Plug 'NickvanDyke/opencode.nvim'
 call plug#end()
+
+lua require('telescope-setup')
 
 lua << EOF
 require('oil').setup({
@@ -98,14 +100,15 @@ EOF
 " Add this keybinding with your other mappings
 nnoremap <Leader>e :NvimTreeToggle<CR>
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "python", "javascript", "cpp", "html", "markdown", "lua", "vim", "vimdoc" ,'go'},
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-   disable = { "c", "rust" },  -- list of language that will be disabled
-  },
-}
+lua << EOF
+require('nvim-treesitter').setup()
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'python', 'javascript', 'cpp', 'html', 'markdown', 'lua', 'vim', 'vimdoc', 'go' },
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
 EOF
 
 
