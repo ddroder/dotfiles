@@ -278,9 +278,10 @@ local pixels = {
 local header_lines = {}
 local header_hl = {}
 local groups = {}
+local image_padding = 11
 for row = 1, #pixels, 2 do
   local line = #header_lines + 1
-  header_lines[line] = string.rep("▀", #pixels[row])
+  header_lines[line] = string.rep(" ", image_padding) .. string.rep("▀", #pixels[row])
   header_hl[line] = {}
   for column = 1, #pixels[row] do
     local top = pixels[row]:sub(column, column)
@@ -290,7 +291,7 @@ for row = 1, #pixels, 2 do
       vim.api.nvim_set_hl(0, group, { fg = colors[top], bg = colors[bottom] })
       groups[group] = true
     end
-    header_hl[line][column] = { group, (column - 1) * 3, column * 3 }
+    header_hl[line][column] = { group, image_padding + (column - 1) * 3, image_padding + column * 3 }
   end
 end
 
