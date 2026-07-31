@@ -46,7 +46,6 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'CRAG666/code_runner.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ThePrimeagen/vim-be-good'
 Plug 'tpope/vim-fugitive'
-Plug 'kdheepak/lazygit.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-telescope/telescope.nvim'
@@ -202,7 +201,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap <Leader>t :vsplit<CR>:terminal<CR>
 nnoremap <Leader>f :Telescope find_files<CR>
 nnoremap <Leader>g :Telescope live_grep<CR>
-nnoremap <leader>lg :LazyGit<CR>
+nnoremap <leader>lg :lua Snacks.lazygit()<CR>
 nnoremap <Leader>r :RunCode<CR>
 nnoremap <Leader>c :RunClose<CR>
 nmap <C-s> <Plug>MarkdownPreview

@@ -1,2 +1,6 @@
 os:
-  editPreset: nvim
+  editPreset: nvim-remote
+keybinding:
+  universal:
+    edit: o
+    openFile: <disabled>
