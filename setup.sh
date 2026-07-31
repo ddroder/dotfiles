@@ -194,6 +194,17 @@ create_symlinks() {
     ln -sf "$DOTFILES_DIR/neofetch" "$HOME/.config/neofetch"
     echo "Linked neofetch config"
 
+    # Lazygit config
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        LAZYGIT_DIR="$HOME/Library/Application Support/lazygit"
+    else
+        LAZYGIT_DIR="$HOME/.config/lazygit"
+    fi
+    mkdir -p "$LAZYGIT_DIR"
+    backup_if_exists "$LAZYGIT_DIR/config.yml"
+    ln -sf "$DOTFILES_DIR/lazygit/config.yml" "$LAZYGIT_DIR/config.yml"
+    echo "Linked lazygit config"
+
     # Ghostty config (templated - replaces {{HOME}} with actual home path)
     # macOS uses ~/Library/Application Support/com.mitchellh.ghostty/config
     # Linux uses ~/.config/ghostty/config
