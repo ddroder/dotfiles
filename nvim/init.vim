@@ -151,6 +151,20 @@ vim.g.opencode_opts = {
 
 vim.o.autoread = true
 
+if vim.env.TMUX then
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lazygit",
+    callback = function(event)
+      for key, direction in pairs({ h = "-L", j = "-D", k = "-U", l = "-R" }) do
+        local tmux_direction = direction
+        vim.keymap.set("t", "<C-" .. key .. ">", function()
+          vim.system({ "tmux", "select-pane", tmux_direction })
+        end, { buffer = event.buf, silent = true })
+      end
+    end,
+  })
+end
+
 local opencode = require("opencode")
 vim.keymap.set({ "n", "x" }, "<leader>oa", function()
   opencode.ask("@this: ", { submit = true })
