@@ -228,24 +228,73 @@ nnoremap <leader>x :lua require("notebook-navigator").run_and_move()<CR>
 lua << EOF
 local alpha = require'alpha'
 local dashboard = require'alpha.themes.dashboard'
+local colors = {
+  B = "#91503A",
+  G = "#427F4B",
+  K = "#4B241A",
+  P = "#E88668",
+  R = "#BE4626",
+  Y = "#F6CF3F",
+  g = "#224831",
+  y = "#CD9924",
+}
+local color_names = {
+  B = "Brown",
+  G = "Green",
+  K = "Black",
+  P = "Pink",
+  R = "Red",
+  Y = "Yellow",
+  g = "DarkGreen",
+  y = "Gold",
+}
+local pixels = {
+  "BBBBBGGKyYYYYyKBBBBBBBBBBBBBBBGGGGGGByYY",
+  "BBBBBGGGBYYYYYyBBBBBBBBBBBBBBBGGGBByYYYY",
+  "BBBBGGGGByYYYYYyBBBBBBBBBBBBBBKByyYYYYYY",
+  "BBBKGGGGGBYYYYYYYRBBBBBBBBBBBBByYYYYYYYY",
+  "BBBgGGgGGKyYYYYYYYyyyyyyyyyyyYYYYYYYYYYy",
+  "BBKgGGggGGKyYYYYYYYYYYYYYYYYYYYYYYYYYYyB",
+  "BBKgGgggGGgKyYYYYYYYYYYYYYYYYYYYYYYYYyBG",
+  "BBKGGgggggggByyYYYYYYYYYYYYYYYYYYYYyBGGG",
+  "BBKGggggggggKBYYYYYYYYYYYYYYYYYYYyyBGGGG",
+  "BKggggggggggKyYYYYYYYYYYYYYYYYYYYYBKGGGG",
+  "BKggggggggggKyYYyyYYYYYYYYYyyyYYYYyGGGGG",
+  "BKggggggggggBYYyyByYYYYYYYYyBKyYYYyBGGGG",
+  "KggggggggGGGBYYyBKBYYYYYYYYBKKyYYYYBGGGG",
+  "KggggggggGGKyYYYyByYYYYYYYYyBRYYYYYyGGGG",
+  "KggggggggGGKyYYYYYYYyBRYYYYYYYYYYYYyGGGG",
+  "gGggggggGGGKBRyYYYYYYyyYYYYYYYyyyyYyBGGG",
+  "GGgGGGGGGGGBRRRYYYYYYYYYYYYYYYRRRRYYBGGG",
+  "gGGGGGGGGGgBRRRYYYYYyyyyyYYYYYRRRRyYyGGG",
+  "GGgggggGGGKBRRyYYYYYBBRyyyYYYYRRRRYYyGGG",
+  "GGgggggggggyyyYYYYYYBPPPyyYYYYyyyyYYYBGG",
+  "GggggggggggBYYYYYYYYyRPPyyYYYYYYYYYYYBGG",
+  "GGGGGGGGGGGBYYYYYYYYYyRRyYYYYYYYYYYYYyGG",
+  "ggGGGGGGGGGGyYYYYYYYYYYYYYYYYYYYYYYYYyGG",
+  "ggGGGGGGGGGGBYYYYYYYYYYYYYYYYYYYYYYYYyBG",
+}
 
--- Define the shocked Pikachu ASCII art followed by the text
-local header = [[
-⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⣠⣤⣶⣶
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⢰⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⣀⣾⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⡏⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿
-⣿⣿⣿⣿⣿⣿⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠁⠀⣿
-⣿⣿⣿⣿⣿⣿⣧⡀⠀⠀⠀⠀⠙⠿⠿⠿⠻⠿⠿⠟⠿⠛⠉⠀⠀⠀⠀⠀⣸⣿
-⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣴⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠀⢰⣹⡆⠀⠀⠀⠀⠀⠀⣭⣷⠀⠀⠀⠸⣿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠈⠉⠀⠀⠤⠄⠀⠀⠀⠉⠁⠀⠀⠀⠀⢿⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⢾⣿⣷⠀⠀⠀⠀⡠⠤⢄⠀⠀⠀⠠⣿⣿⣷⠀⢸⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⡀⠉⠀⠀⠀⠀⠀⢄⠀⢀⠀⠀⠀⠀⠉⠉⠁⠀⠀⣿⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿
-⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿
+local header_lines = {}
+local header_hl = {}
+local groups = {}
+for row = 1, #pixels, 2 do
+  local line = #header_lines + 1
+  header_lines[line] = string.rep("▀", #pixels[row])
+  header_hl[line] = {}
+  for column = 1, #pixels[row] do
+    local top = pixels[row]:sub(column, column)
+    local bottom = pixels[row + 1]:sub(column, column)
+    local group = "AlphaPikachu" .. color_names[top] .. color_names[bottom]
+    if not groups[group] then
+      vim.api.nvim_set_hl(0, group, { fg = colors[top], bg = colors[bottom] })
+      groups[group] = true
+    end
+    header_hl[line][column] = { group, (column - 1) * 3, column * 3 }
+  end
+end
 
+local signature = [[
   ____              _      _   ____                _
  |  _ \  __ _ _ __ (_) ___| | |  _ \ _ __ ___   __| | ___ _ __
  | | | |/ _` | '_ \| |/ _ \ | | | | | '__/ _ \ / _` |/ _ \ '__|
@@ -257,9 +306,14 @@ local header = [[
 
 "They did not know it was impossible, so they did it!" - Mark Twain
 ]]
+header_lines[#header_lines + 1] = ""
+vim.list_extend(header_lines, vim.split(signature, "\n"))
+for line = #header_hl + 1, #header_lines do
+  header_hl[line] = { { "Title", 0, -1 } }
+end
 
-dashboard.section.header.val = vim.split(header, "\n")
-dashboard.section.header.opts.hl = "Title"
+dashboard.section.header.val = header_lines
+dashboard.section.header.opts.hl = header_hl
 
 -- Rest of your dashboard configuration
 dashboard.section.buttons.val = {
