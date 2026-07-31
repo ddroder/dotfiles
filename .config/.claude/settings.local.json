@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/Daniel.Droder/dotfiles log --oneline -5)",
+      "Bash(git -C /Users/Daniel.Droder/dotfiles fetch origin)",
+      "Bash(git -C /Users/Daniel.Droder/dotfiles log --oneline origin/master -5)",
+      "Bash(git -C /Users/Daniel.Droder/dotfiles log --oneline origin/main -5)",
+      "Bash(git -C /Users/Daniel.Droder/dotfiles log --oneline --all --graph -10)"
+    ]
+  }
+}
